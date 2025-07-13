@@ -1,0 +1,27 @@
+package com.example.demo.config;
+
+import com.example.demo.model.User;
+import com.example.demo.repository.UserMongoRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MongoDataInitializer implements CommandLineRunner {
+
+    private final UserMongoRepository userMongoRepository;
+
+    public MongoDataInitializer(UserMongoRepository userMongoRepository) {
+        this.userMongoRepository = userMongoRepository;
+    }
+
+    @Override
+    public void run(String... args) {
+        if (userMongoRepository.count() == 0) {
+            userMongoRepository.save(new User("Mongo Alice", "alice@mongo.com"));
+            userMongoRepository.save(new User("Mongo Bob", "bob@mongo.com"));
+            System.out.println("✅ MongoDB initialized with user data.");
+        } else {
+            System.out.println("ℹ️ MongoDB already has users, skipping init.");
+        }
+    }
+}
