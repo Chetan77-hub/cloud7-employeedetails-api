@@ -34,6 +34,5 @@ public class UserController {
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Integer id) {
         logger.info("Fetching user with id: {}", id);
-        return userMongoRepository.findById(id).orElse(null);
-    }
+        return userMongoRepository.findById(String.valueOf(id)).orElse(null);
 }
