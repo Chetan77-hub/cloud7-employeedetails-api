@@ -22,7 +22,7 @@ public class UserController {
     @GetMapping
     public List<User> getAllUsers() {
         logger.info("Fetching all users");
-        return uuserMongoRepository.findAll();
+        return userMongoRepository.findAll();
     }
 
     @PostMapping
