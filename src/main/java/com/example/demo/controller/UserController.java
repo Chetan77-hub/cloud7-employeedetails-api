@@ -36,3 +36,4 @@ public class UserController {
         logger.info("Fetching user with id: {}", id);
         return userMongoRepository.findById(String.valueOf(id)).orElse(null);
 }
+}
